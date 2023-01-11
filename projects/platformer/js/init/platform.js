@@ -38,6 +38,7 @@
 
     // example:
     createPlatform(410, 290, 0.5); //top
+    createPlatform(610, 190, 0.6); //top2
     createPlatform(70, 400, 0.6); //mid
     createPlatform(690, 520, 0.5); //mid2 
     createPlatform(350, 450, 0.5); //mid3 

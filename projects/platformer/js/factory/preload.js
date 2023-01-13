@@ -16,8 +16,8 @@
         game.load.image('max', './asset/collectable/max-head.png');
         game.load.image('Saul', './asset/collectable/Saul.jpg');
         game.load.image('Saul2', './asset/collectable/Saul2.jpg');
-        game.load.image('Him', './asset/collectable/Him.jpg');
-        game.load.image('Vergil', './asset/collectable/Vergil.jpg');
+        game.load.image('Ghost', './asset/collectable/Ghost.jpg');
+        game.load.image('Vergil2', './asset/collectable/Vergil2.jpg');
         game.load.atlas('halle', './asset/halle/phaser-json-array/halle.png', './asset/halle/phaser-json-array/halle.json');
     };
 })(window);

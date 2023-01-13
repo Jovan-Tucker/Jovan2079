@@ -9,8 +9,8 @@
     max: { assetKey: "max", points: 20 },
     Saul: { assetKey: "Saul", points: 20 },
     Saul2: { assetKey: "Saul2", points: 20 },
-    Him: { assetKey: "Him", points: 20 },
-    Vergil: { assetKey: "Vergil", points: 20 },
+    Ghost: { assetKey: "Ghost", points: 20 },
+    Vergil2: { assetKey: "Vergil2", points: 20 },
     steve: { assetKey: "steve", points: 30 },
     grace: { assetKey: "grace", points: 40 },
     kennedi: { assetKey: "kennedi", points: 50 },
@@ -43,9 +43,9 @@
     // ALL YOUR CODE GOES BELOW HERE ///////////////////////////////////////
 
     // example:
-    createCollectable(type.Him, 200, 170, 6, 0.7);
+    createCollectable(type.Ghost, 200, 170, 6, 0.7);
     createCollectable(type.Saul, 400,300,1,1);
-    createCollectable(type.Vergil, 250,100,1,1);
+    createCollectable(type.Vergil2, 250,100,1,1);
     createCollectable(type.Saul2, 780,90,1,1);
     // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////

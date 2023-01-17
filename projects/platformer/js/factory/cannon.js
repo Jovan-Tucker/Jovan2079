@@ -74,7 +74,7 @@
             // cannon.scale.y = -1;
          
             projectile = game.projectile.create(cannon.x, cannon.y, assetKeyProjectile);
-            projectile.anchor.setTo(0.5, 0.5);
+            projectile.anchor.setTo(0.4, 0.4);
             projectile.angle = angle;
             projectile.alpha = 0;
 

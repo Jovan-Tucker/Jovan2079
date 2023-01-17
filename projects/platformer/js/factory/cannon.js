@@ -8,7 +8,7 @@
     opspark.cannon.factory = function (game) {
         const
             assetKeyCannon = 'cannon',
-            assetKeyProjectile = 'Troll',
+            assetKeyProjectile = 'Hit',
             projectileHalfSize = 12;
 
         game.cannon = game.add.group();

@@ -8,16 +8,17 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: blue;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 300px;  /* <--- Change me! */
 		}
 		.board{
+			
 			height: 100vh;
 		}
 	</style>
@@ -25,6 +26,7 @@
 
 </head>
 <body class="board">
+	
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -62,7 +64,7 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var positionX =	0;		
 
 			
 			/* 
@@ -71,10 +73,13 @@
 			turn it around! 
 			*/
 			function update() {
-				
+				positionX = positionX + 10
+				moveBoxTo(positionX);
 
 			};
-
+			
+			update(100);
+			positionX = positionX + 10
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
 			it should increase the points total, increase the speed, and move the box to

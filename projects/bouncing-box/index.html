@@ -5,7 +5,13 @@
 	<title>Bouncing Box</title>
 	<script src="jquery.min.js"></script>
 	<style>
-		.box {
+	
+	body  {
+  background-image: url("paper.gif");
+  background-color: #cccccc;
+}
+	
+	.box {
 			width: 70px;
 			height: 70px;
 			background-color: blue;
@@ -25,6 +31,8 @@
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
+
+
 <body class="board">
 	
 	<!-- HTML for the box -->
@@ -50,9 +58,10 @@
 			box.on('click', handleBoxClick);
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
-			}
+			function moveBoxTo(newPositionX, newPositionY) {
+      box.css('left', newPositionX);
+      box.css('top', newPositionY);
+  }
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
@@ -67,6 +76,11 @@
 			var positionX =	1;		
 			var points = 0;
 			var speed = 10;
+			var positionY = 1;
+			var speedY = 10;
+			var randNum = Math.random() * 100;
+			var boardHeight = jQuery(window).height(); 
+			
 
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -74,23 +88,35 @@
 			turn it around! 
 			*/
 			function update() {
-				positionX = positionX + speed
-				moveBoxTo(positionX);
+				positionX =positionX + speed
+				positionY =positionY + speed
+				moveBoxTo(positionX, positionY);
 
-				if(positionX > boardWidth){
+				if(positionX > boardWidth ){
 					
-					speed = -speed
+					speed =-speed
+				}
+
+				if(positionY > boardHeight ){
+					
+					speedY =+speedY
+				}
+
+				if(positionY < 1){
+					
+					positionY = randNum
+					speedY= +11 
 				}
 
 				if(positionX < 1){
 					
-					positionX = 1 +1
-					speed = +speed
+					positionX = randNum
+					speed = +11 
 				}
 
 			};
 			
-			update(100);
+			update(50);
 			
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -98,8 +124,10 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				positionX = 0;
+				positionX = randNum;
+				positionY = randNum;
 				speed = speed +3
+				speedY = speedY +3
 				points = points +1
 
 				changeBoxText(points, speed);

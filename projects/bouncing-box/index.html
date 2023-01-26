@@ -7,7 +7,7 @@
 	<style>
 	
 	body  {
-  background-image: url("paper.gif");
+  background-image: url("images/dante-vs-vergil1920x1080.jpg" );
   background-color: #cccccc;
 }
 	
@@ -21,11 +21,11 @@
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 300px;  /* <--- Change me! */
+			left: 70px;  /* <--- Change me! */
 		}
 		.board{
 			
-			height: 100vh;
+			height: 90vh;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -61,6 +61,7 @@
 			function moveBoxTo(newPositionX, newPositionY) {
       box.css('left', newPositionX);
       box.css('top', newPositionY);
+	  box.css('background-color', colorStr);
   }
 
 			// changes the text displayed on the Box
@@ -73,15 +74,16 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			var positionX =	1;		
+			var positionX =	0;		
 			var points = 0;
 			var speed = 10;
-			var positionY = 1;
+			var positionY = 0;
 			var speedY = 10;
 			var randNum = Math.random() * 100;
-			var boardHeight = jQuery(window).height(); 
+			var boardHeight = jQuery(window).height(70); 
+			var colorStr = "rgb(50, 25, 250)";
+			var randomNumberBetween0and10 = Math.random() * 10;
 			
-
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -94,29 +96,31 @@
 
 				if(positionX > boardWidth ){
 					
-					speed =-speed
+					speed  = -speed 
+				}
+
+				if(positionX < 0){
+					
+					positionX = randNum
+					speed = -speed 
 				}
 
 				if(positionY > boardHeight ){
 					
-					speedY =+speedY
+					speedY = -speedY
 				}
 
-				if(positionY < 1){
+				if(positionY < 0){
 					
 					positionY = randNum
-					speedY= +11 
+					speedY= -speedY 
 				}
 
-				if(positionX < 1){
-					
-					positionX = randNum
-					speed = +11 
-				}
+				
 
 			};
 			
-			update(50);
+			update(100);
 			
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -126,16 +130,24 @@
 			function handleBoxClick() {
 				positionX = randNum;
 				positionY = randNum;
-				speed = speed +3
-				speedY = speedY +3
+				
+				
 				points = points +1
 
-				changeBoxText(points, speed);
+				if(speed > 0){
+                   speed = speed +3
+				}
+				else if(speedY < 0){
+					speedY = speedY +3
+				}
+
+				changeBoxText(points);
 
 
 			};
-			changeBoxText(points, speed);
+			
 
+			
 
 
 		})();

@@ -9,7 +9,10 @@ var init = function (window) {
         view = app.view,
         fps = draw.fps('#000');
         
-    
+        
+
+
+
     window.opspark.makeGame = function() {
         
         window.opspark.game = {};
@@ -26,19 +29,21 @@ var init = function (window) {
         // TODO 2 : Create a function that draws a circle 
         
         function drawCircle(){
-        circle = draw.randomCircleInArea(canvas, true, true, '#999', 2); 
-        physikz.addRandomVelocity(circle, canvas);
+        circle = draw.randomCircleInArea(canvas, true, false, '#999', 2); 
+        physikz.addRandomVelocity(circle, canvas, 10, 10);
         view.addChild(circle); 
         circles.push(circle);
 
         };
         // TODO 3 / 7 : Call the drawCircle() function 
 
+
         drawCircle();
         drawCircle();
         drawCircle();
         drawCircle();
         drawCircle();
+     
 
 
 
@@ -59,17 +64,27 @@ var init = function (window) {
             physikz.updatePosition(circles[2]);
             physikz.updatePosition(circles[3]);
             physikz.updatePosition(circles[4]);
-        }
-        
-            // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           
+            
+
+
+             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
             game.checkCirclePosition(circles[0]);
             game.checkCirclePosition(circles[1]);
             game.checkCirclePosition(circles[2]);
             game.checkCirclePosition(circles[3]);
             game.checkCirclePosition(circles[4]);
 
-            // TODO 9 : Iterate over the array
+                        // TODO 9 : Iterate over the array
+
+        }
+        
+        
+
+           
+           
+        
+
+
            
             
         
@@ -88,16 +103,18 @@ var init = function (window) {
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
             
-           else if ( circle.x < canvas.hight ) {
-                circle.x = 0;
+          // if the circle gone past the left side of the screen//
+           else if ( circle.x < 0 ) {
+                circle.x = canvas.width ;
             }
 
-            if ( circle.y > canvas.width ) {
+         // if the circle gone past the bottom of the screen//
+          else if ( circle.y > canvas.length ) {
                 circle.y = 0;
             }
-
-            if ( circle.y < canvas.width ) {
-                circle.y = 0;
+         // if the circle gone past the top of the screen//
+          else if ( circle.y < 0 ) {
+                circle.y = canvas.length;
             }
 
 

@@ -30,7 +30,7 @@ var init = function (window) {
         
         function drawCircle(){
         circle = draw.randomCircleInArea(canvas, true, false, '#999', 2); 
-        physikz.addRandomVelocity(circle, canvas, 10, 10);
+        physikz.addRandomVelocity(circle, canvas, 14, 12);
         view.addChild(circle); 
         circles.push(circle);
 
@@ -38,13 +38,11 @@ var init = function (window) {
         // TODO 3 / 7 : Call the drawCircle() function 
 
 
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
-        drawCircle();
+        
      
-
+        for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
+          drawCircle();
+        }
 
 
         ////////////////////////////////////////////////////////////
@@ -119,12 +117,12 @@ var init = function (window) {
             }
 
          // if the circle gone past the bottom of the screen//
-          else if ( circle.y > canvas.length ) {
+          else if ( circle.y > canvas.height ) {
                 circle.y = 0;
             }
          // if the circle gone past the top of the screen//
           else if ( circle.y < 0 ) {
-                circle.y = canvas.length;
+                circle.y = canvas.height;
             }
 
 

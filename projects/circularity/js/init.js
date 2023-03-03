@@ -28,6 +28,7 @@ var init = function (window) {
 
         // TODO 2 : Create a function that draws a circle 
         
+        //the function that makes the circles//
         function drawCircle(){
         circle = draw.randomCircleInArea(canvas, true, false, '#999', 2); 
         physikz.addRandomVelocity(circle, canvas, 14, 12);
@@ -37,9 +38,7 @@ var init = function (window) {
         };
         // TODO 3 / 7 : Call the drawCircle() function 
 
-
-        
-     
+        // makes it so that hter is 100 circles without 100 functions//
         for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
           drawCircle();
         }
@@ -56,7 +55,7 @@ var init = function (window) {
         */
         function update() {
             // TODO 4 : Update the circle's position //
-           
+           // this update the circle's position so that you can see it move//
             physikz.updatePosition(circles[0]);
             physikz.updatePosition(circles[1]);
             physikz.updatePosition(circles[2]);
@@ -66,6 +65,7 @@ var init = function (window) {
 
 
              // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
+            //this sees if the circle goes out of bounds at anypoint//
             game.checkCirclePosition(circles[0]);
             game.checkCirclePosition(circles[1]);
             game.checkCirclePosition(circles[2]);
@@ -74,6 +74,7 @@ var init = function (window) {
 
               // TODO 9 : Iterate over the array
 
+              // this makes it so that there is not over a 100 things to call//
             for (var i = 0; i < circles.length; i++) {
                  var eachValue = circles[i];
                      

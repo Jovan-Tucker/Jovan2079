@@ -30,15 +30,15 @@ var init = function (window) {
         
         //the function that makes the circles//
         function drawCircle(){
-        circle = draw.randomCircleInArea(canvas, true, false, '#999', 2); 
-        physikz.addRandomVelocity(circle, canvas, 14, 12);
+        circle = draw.randomCircleInArea(canvas, false, false, '#999', 0);
+        physikz.addRandomVelocity(circle, canvas, 15, 15); // this gives the circles a random velocity//
         view.addChild(circle); 
         circles.push(circle);
 
         };
         // TODO 3 / 7 : Call the drawCircle() function 
 
-        // makes it so that hter is 100 circles without 100 functions//
+        // makes it so that hter is 100 circles without 100 functions. What happens in this code is that it would keep making the function untill there is 100. //
         for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++) {
           drawCircle();
         }
@@ -74,7 +74,7 @@ var init = function (window) {
 
               // TODO 9 : Iterate over the array
 
-              // this makes it so that there is not over a 100 things to call//
+              // this makes it so that there is not over a 100 things to call. this code is using a value to itereate over to the other fuctions like updateposition and circle poition//
             for (var i = 0; i < circles.length; i++) {
                  var eachValue = circles[i];
                      

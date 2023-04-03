@@ -21,9 +21,24 @@
             console.log("setting score = ",score);
         }
 
+
         function getScore() {
             return score;
         }
+
+
+
+        function scoreCheck() {
+            if ((score < 0) && (halle.x === 90000)) {
+                game.changeIntegrity(-1000);
+            
+            }
+        }
+        
+        scoreCheck();
+
+
+
 
         // XXX: this is a glorious hack in order to get halle because
         // we forgot to pass it in originally

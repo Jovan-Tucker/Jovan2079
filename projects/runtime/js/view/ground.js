@@ -1,6 +1,10 @@
 (function (window) {
     'use strict';
     
+
+    
+
+
     window.opspark = window.opspark || {};
     var 
         _ = window._,
@@ -19,7 +23,7 @@
         
         function render() {
             ground.removeAllChildren();
-            ground.addChild(draw.rect(canvas.width, 10, '#CCC'));
+            ground.addChild(draw.rect(canvas.width, 1, '#CCC'));
         }
         
         function resize(argument) {

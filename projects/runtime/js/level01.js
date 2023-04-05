@@ -20,7 +20,8 @@ var level01 = function (window) {
                
                /* 1st wave  */
                 { "type": "sawblade", "x": 290, "y": groundY -5 },         
-                { "type": "Saul", "x": 1000, "y": groundY-20 },
+                { "type": "sawblade", "x": 590, "y": groundY -5 },       
+                { "type": "sawblade", "x": 640, "y": groundY -5 },       
                 { "type": "reward", "x": 800, "y": groundY -90 },
                 { "type": "reward", "x": 1100, "y": groundY -90 },
                 { "type": "sawblade", "x": 850, "y": groundY -5 },
@@ -37,27 +38,46 @@ var level01 = function (window) {
               
               { "type": "TopG", "x": 2500, "y": groundY -20 },
               { "type": "TopG", "x": 2800, "y": groundY -20 }, 
-              { "type": "grass", "x": 2200, "y": groundY - 3 },
-              { "type": "troll", "x": 2400, "y": groundY - 50 },
-              { "type": "grass", "x": 3100, "y": groundY - 3 },
-              { "type": "enemy", "x": 2800, "y": groundY -398 },
+              { "type": "grass", "x": 2050, "y": groundY - 3 },
+              { "type": "troll", "x": 2300, "y": groundY - 50 },
+              { "type": "enemy", "x": 2600, "y": groundY -398 },
+              { "type": "TopG", "x": 3230, "y": groundY -20 }, 
               { "type": "troll", "x": 3400, "y": groundY - 50 },
               { "type": "TopG", "x": 3600, "y": groundY -20 },
 
                 /* 3rd wave*/ 
-                { "type": "banana", "x": 900, "y": groundY -10 },
+                { "type": "axel", "x": 4150, "y": groundY -50 },              
+                { "type": "Saul", "x": 500, "y": groundY -50 }, 
+                { "type": "troll", "x": 4050, "y": groundY - 50 }, 
+                { "type": "troll", "x": 5400, "y": groundY - 50 }, 
+                { "type": "ghost", "x": 4800, "y": groundY - 50 }, 
+                { "type": "ghost", "x": 5700, "y": groundY - 50 }, 
+                { "type": "enemy", "x": 4600, "y": groundY -50 },
+                { "type": "enemy", "x": 6000, "y": groundY -50 },
+                { "type": "nerd", "x": 4200, "y": groundY -50 },
+                { "type": "axel", "x": 5000, "y": groundY -50 },  
+                { "type": "troll", "x": 4400, "y": groundY - 398 },
+                { "type": "bateman", "x": 4700, "y": groundY -20 },
+                { "type": "bateman", "x": 5500, "y": groundY -20 },
 
-                { "type": "axel", "x": 4200, "y": groundY -20 },              
-                { "type": "troll", "x": 4050, "y": groundY - 50 },
-                { "type": "troll", "x": 4800, "y": groundY - 398 },
-               
+                /* 4th wave*/ 
 
+                { "type": "tvGood", "x": 6300, "y": groundY -50 },
+                { "type": "troll", "x": 6450, "y": groundY - 398 },
+                { "type": "axel", "x": 6800, "y": groundY -50 },  
+                { "type": "troll", "x": 6850, "y": groundY - 50 },
+                { "type": "bateman", "x": 6900, "y": groundY -20 },
+                { "type": "tvbad", "x": 6600, "y": groundY -50 },
+                { "type": "tvbad", "x": 7000, "y": groundY -50 },
+                { "type": "tvbad", "x": 7200, "y": groundY -5 },
+                { "type": "tvGood", "x": 7400, "y": groundY -50 },
+              
               
             ]
         };
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
-        game.setDebugMode(false);
+        game.setDebugMode(true);
 
         // TODO 6 and on go here
         // BEGIN EDITING YOUR CODE HERE
@@ -68,7 +88,7 @@ var level01 = function (window) {
         function createSawBlade(x, y){
 
             var hitZoneSize = 25;//size of the hitzone//
-            var damageFromObstacle = 1000; //sets the damage amount and assigns to a new variable//
+            var damageFromObstacle = 111100; //sets the damage amount and assigns to a new variable//
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstalces//
             sawBladeHitZone.x = x; // assigns the x vaule using the argument//
             sawBladeHitZone.y = y; // assigns the y vaule using the argument//
@@ -84,7 +104,7 @@ var level01 = function (window) {
 
             var grass = game.createGameItem("grass");
             var hitZoneSize = 25;//size of the hitzone//
-            var damageFromObstacle = 1000; //sets the damage amount and assigns to a new variable//
+            var damageFromObstacle = 111100; //sets the damage amount and assigns to a new variable//
             var grass = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstalces//
             grass.x = x; // assigns the x vaule using the argument//
             grass.y = y; // assigns the y vaule using the argument//
@@ -97,6 +117,21 @@ var level01 = function (window) {
         }
 
         
+        function hole(x, y){
+
+            var hole = game.createGameItem("hole");
+            var hitZoneSize = 25;//size of the hitzone//
+            var damageFromObstacle = 111100; //sets the damage amount and assigns to a new variable//
+            var hole = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstalces//
+            hole.x = x; // assigns the x vaule using the argument//
+            hole.y = y; // assigns the y vaule using the argument//
+            game.addGameItem(hole) //adds the hitzone to the game//
+            var obstacleImage = draw.bitmap("img/hole.png"); // draws the image as a bitmap and stores it//
+            obstacleImage.x = -55
+            obstacleImage.y = -23
+            hole.addChild(obstacleImage);//adds  obstacleImage as a child// 
+            
+        }
         
 
 
@@ -135,7 +170,7 @@ function createEnemy(x, y){
         enemy.velocityX = -2//speed on the x aixs//
         enemy.rotationalVelocity = 0//speed of the enemy rotating
         enemy.onPlayerCollision = function () {
-            game.changeIntegrity(-1000)  //takes health away when player hits it
+            game.changeIntegrity(-111100)  //takes health away when player hits it
         };
         enemy.onProjectileCollision = function (){
             game.increaseScore(100); //increases the score//
@@ -146,15 +181,15 @@ function createEnemy(x, y){
 
     function saul(x, y){
 
-        var saul = game.createGameItem("Saul", 10); //creaate the gameItem and store it 
+        var saul = game.createGameItem("Saul", 70); //creaate the gameItem and store it 
         var redSquare = draw.bitmap("img/Saul.png") // draws a rectangle and stores it in the game
-        redSquare.x = -5;//stores a value as the x value of the gameItem//
-        redSquare.y = -10;
+        redSquare.x = -60;//stores a value as the x value of the gameItem//
+        redSquare.y = -50;
         saul.addChild(redSquare);//adds the gameItem as a child of enemy
         saul.x = x;//stores the value passed as the x argument as enemy's x value
         saul.y = y;
         game.addGameItem(saul);// adds the enemy to the game to make it move
-        saul.velocityX = 0//speed on the x aixs//
+        saul.velocityX = -1//speed on the x aixs//
         saul.rotationalVelocity = 0//speed of the enemy rotating
         saul.onPlayerCollision = function () {
             game.increaseScore(-400);
@@ -164,8 +199,9 @@ function createEnemy(x, y){
             saul.fadeOut();//flies the enemy 
         };
 
-    } 
+    };
 
+    
     function topG(x, y){
 
         var topG = game.createGameItem("TopG", 80); //creaate the gameItem and store it 
@@ -179,7 +215,7 @@ function createEnemy(x, y){
         topG.velocityX = -2//speed on the x aixs//
         topG.rotationalVelocity = 0//speed of the enemy rotating
         topG.onPlayerCollision = function () {
-            game.changeIntegrity(-1000)  //takes health away when player hits it
+            game.changeIntegrity(-111100)  //takes health away when player hits it
         };
         topG.onProjectileCollision = function (){
             game.increaseScore(100); //increases the score//
@@ -188,28 +224,31 @@ function createEnemy(x, y){
 
     }           
 
-/* function topG(x, y){
 
-        var topG = game.createGameItem("TopG", 80); //creaate the gameItem and store it 
-        var blueSquare = draw.bitmap("img/Top G 2.jpg") // draws a rectangle and stores it in the game
-        blueSquare.x = -55;//stores a value as the x value of the gameItem//
-        blueSquare.y = -80;
-        topG.addChild(blueSquare);//adds the gameItem as a child of enemy
-        topG.x = x;//stores the value passed as the x argument as enemy's x value
-        topG.y = y;
-        game.addGameItem(topG);// adds the enemy to the game to make it move
-        topG.velocityX = -2//speed on the x aixs//
-        topG.rotationalVelocity = 0//speed of the enemy rotating
-        topG.onPlayerCollision = function () {
-            game.changeIntegrity(-1000)  //takes health away when player hits it
+    function tvBad(x, y){
+
+        var tvBad = game.createGameItem("tvbad", 85); //creaate the gameItem and store it 
+        var blueSquare = draw.bitmap("img/Tvbad.png") // draws a rectangle and stores it in the game
+        blueSquare.x = -85;//stores a value as the x value of the gameItem//
+        blueSquare.y = -60;
+        tvBad.addChild(blueSquare);//adds the gameItem as a child of enemy
+        tvBad.x = x;//stores the value passed as the x argument as enemy's x value
+        tvBad.y = y;
+        game.addGameItem(tvBad);// adds the enemy to the game to make it move
+        tvBad.velocityX = -2//speed on the x aixs//
+        tvBad.rotationalVelocity = 0//speed of the enemy rotating
+        tvBad.onPlayerCollision = function () {
+            game.changeIntegrity(-111100)  //takes health away when player hits it
         };
-        topG.onProjectileCollision = function (){
-            game.increaseScore(100); //increases the score//
-            topG.fadeOut();//flies the enemy 
+        tvBad.onProjectileCollision = function (){
+            game.increaseScore(50); //increases the score//
+            tvBad.fadeOut();//flies the enemy 
         };
 
-    }           
-*/
+    }  
+
+
+
     function bateman(x, y){
 
         var bateman = game.createGameItem("bateman", 80); //creaate the gameItem and store it 
@@ -223,14 +262,61 @@ function createEnemy(x, y){
         bateman.velocityX = -2//speed on the x aixs//
         bateman.rotationalVelocity = 0//speed of the enemy rotating
         bateman.onPlayerCollision = function () {
-            game.changeIntegrity(-1000)  //takes health away when player hits it
+            game.increaseScore(-500); //increases the score//
         };
+
         bateman.onProjectileCollision = function (){
-            game.increaseScore(100); //increases the score//
+            game.changeIntegrity(-1000)
             bateman.fadeOut();//flies the enemy 
         };
 
     }
+
+    function ghost(x, y){
+
+        var ghost = game.createGameItem("ghost", 80); //creaate the gameItem and store it 
+        var greenSquare = draw.bitmap("img/ghost.jpg") // draws a rectangle and stores it in the game
+        greenSquare.x = -55;//stores a value as the x value of the gameItem//
+        greenSquare.y = -70;
+        ghost.addChild(greenSquare);//adds the gameItem as a child of enemy
+        ghost.x = x;//stores the value passed as the x argument as enemy's x value
+        ghost.y = y;
+        game.addGameItem(ghost);// adds the enemy to the game to make it move
+        ghost.velocityX = -2//speed on the x aixs//
+        ghost.rotationalVelocity = 0//speed of the enemy rotating
+        ghost.onPlayerCollision = function () {
+            game.increaseScore(-500); //increases the score//
+        };
+    
+    ghost.onProjectileCollision = function (){
+        game.changeIntegrity(-1000)
+        ghost.fadeOut();//flies the enemy 
+    };
+    }
+
+
+    function tvGood(x, y){
+
+        var tvGood = game.createGameItem("tvGood", 80); //creaate the gameItem and store it 
+        var greenSquare = draw.bitmap("img/Tvgood.jpg") // draws a rectangle and stores it in the game
+        greenSquare.x = -55;//stores a value as the x value of the gameItem//
+        greenSquare.y = -45;
+        tvGood.addChild(greenSquare);//adds the gameItem as a child of enemy
+        tvGood.x = x;//stores the value passed as the x argument as enemy's x value
+        tvGood.y = y;
+        game.addGameItem(tvGood);// adds the enemy to the game to make it move
+        tvGood.velocityX = -2//speed on the x aixs//
+        tvGood.rotationalVelocity = 0//speed of the enemy rotating
+        tvGood.onPlayerCollision = function () {
+            game.increaseScore(-500); //increases the score//
+        };
+    
+        tvGood.onProjectileCollision = function (){
+        game.changeIntegrity(-1000)
+        tvGood.fadeOut();//flies the enemy 
+    };
+    }
+
 
 
 
@@ -247,7 +333,7 @@ function createEnemy(x, y){
         axel.velocityX = -2//speed on the x aixs//
         axel.rotationalVelocity = 0//speed of the enemy rotating
         axel.onPlayerCollision = function () {
-            game.changeIntegrity(-1000)  //takes health away when player hits it
+            game.changeIntegrity(-11110)  //takes health away when player hits it
         };
         axel.onProjectileCollision = function (){
             game.increaseScore(100); //increases the score//
@@ -271,7 +357,7 @@ function createEnemy(x, y){
         reward.velocityX = -1 //speed on the x aixs//
         reward.rotationalVelocity = 0//speed of the reward rotating
         reward.onPlayerCollision = function () {
-            game.changeIntegrity(-9999999) 
+            game.changeIntegrity(-1111) 
            
         };
 
@@ -301,7 +387,9 @@ function createEnemy(x, y){
             game.increaseScore(-300); //increases the score//
             nerd.fadeOut();//flies the enemy 
         };
-        
+        nerd.onPlayerCollision = function () {
+            game.increaseScore(-300);
+        };
 
 
 
@@ -363,10 +451,30 @@ function createEnemy(x, y){
 
                 grass(gameItem.x, gameItem.y);
             }
+
+            if (gameItem.type === "hole"){
+
+                hole(gameItem.x, gameItem.y);
+            }
            
+            if (gameItem.type === "ghost"){
+
+                ghost(gameItem.x, gameItem.y);
+            }
+
             if (gameItem.type === "Saul"){
 
-                saul;(gameItem.x, gameItem.y);
+                saul(gameItem.x, gameItem.y);
+            }
+            
+            if (gameItem.type === "tvbad"){
+
+                tvBad(gameItem.x, gameItem.y);
+            }
+
+            if (gameItem.type === "tvGood"){
+
+                tvGood(gameItem.x, gameItem.y);
             }
         
         };
@@ -374,6 +482,8 @@ function createEnemy(x, y){
 
     
         // DO NOT EDIT CODE BELOW HERE
+
+    
 
     }
 }

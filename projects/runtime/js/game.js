@@ -29,7 +29,7 @@
 
 
         function scoreCheck() {
-            if ((score < 0) && (halle.x === 8000)) {
+            if ((score < 0) && (halle.x === 90000)) {
                 game.changeIntegrity(-1000);
             
             }

@@ -22,7 +22,7 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 290, "y": groundY -5 },         
                 { "type": "sawblade", "x": 590, "y": groundY -5 },       
                 { "type": "sawblade", "x": 640, "y": groundY -5 },       
-                { "type": "reward", "x": 800, "y": groundY -90 },
+               
                 { "type": "reward", "x": 1100, "y": groundY -90 },
                 { "type": "sawblade", "x": 850, "y": groundY -5 },
                 { "type": "nerd", "x": 2500, "y": groundY -50 },
@@ -62,15 +62,24 @@ var level01 = function (window) {
 
                 /* 4th wave*/ 
 
-                { "type": "tvGood", "x": 6300, "y": groundY -50 },
+                { "type": "Saul;", "x": 6300, "y": groundY -50 },
                 { "type": "troll", "x": 6450, "y": groundY - 398 },
                 { "type": "axel", "x": 6800, "y": groundY -50 },  
                 { "type": "troll", "x": 6850, "y": groundY - 50 },
-                { "type": "bateman", "x": 6900, "y": groundY -20 },
-                { "type": "tvbad", "x": 6600, "y": groundY -50 },
-                { "type": "tvbad", "x": 7000, "y": groundY -50 },
-                { "type": "tvbad", "x": 7200, "y": groundY -5 },
-                { "type": "tvGood", "x": 7400, "y": groundY -50 },
+                { "type": "bateman", "x": 6860, "y": groundY -20 },
+                { "type": "axel", "x": 6600, "y": groundY -50 },
+                { "type": "enemy", "x": 7000, "y": groundY -50 },
+                { "type": "axel", "x": 7200, "y": groundY -50 },
+                
+
+                /* 5th */ 
+
+                { "type": "tvGood", "x": 9300, "y": groundY -50 },
+                { "type": "tvbad", "x": 9450, "y": groundY -50 },
+                { "type": "tvbad", "x": 9500, "y": groundY -50 },
+                { "type": "eye", "x": 9560, "y": groundY -398 },
+               
+                { "type": "jump", "x": 223653, "y": groundY -460 },
               
               
             ]
@@ -117,21 +126,7 @@ var level01 = function (window) {
         }
 
         
-        function hole(x, y){
-
-            var hole = game.createGameItem("hole");
-            var hitZoneSize = 25;//size of the hitzone//
-            var damageFromObstacle = 111100; //sets the damage amount and assigns to a new variable//
-            var hole = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstalces//
-            hole.x = x; // assigns the x vaule using the argument//
-            hole.y = y; // assigns the y vaule using the argument//
-            game.addGameItem(hole) //adds the hitzone to the game//
-            var obstacleImage = draw.bitmap("img/hole.png"); // draws the image as a bitmap and stores it//
-            obstacleImage.x = -55
-            obstacleImage.y = -23
-            hole.addChild(obstacleImage);//adds  obstacleImage as a child// 
-            
-        }
+        
         
 
 
@@ -178,6 +173,61 @@ function createEnemy(x, y){
         };
 
     }
+
+    function jumpS(x, y){
+
+        var jumpS = game.createGameItem("jump", 0); //creaate the gameItem and store it 
+        var redSquare = draw.bitmap("img/jump.jpg"); // draws a rectangle and stores it in the game
+        redSquare.x = -25;//stores a value as the x value of the gameItem//
+        redSquare.y = -25;
+        jumpS.addChild(redSquare);//adds the gameItem as a child of enemy
+        jumpS.x = x;//stores the value passed as the x argument as enemy's x value
+        jumpS.y = y;
+        game.addGameItem(jumpS);// adds the enemy to the game to make it move
+        jumpS.velocityX = -60//speed on the x aixs//
+        jumpS.rotationalVelocity = 0//speed of the enemy rotating
+        
+
+    }
+
+    function jumpS2(x, y){
+
+        var jumpS = game.createGameItem("jump2", 0); //creaate the gameItem and store it 
+        var redSquare = draw.bitmap("img/jump.jpg"); // draws a rectangle and stores it in the game
+        redSquare.x = -25;//stores a value as the x value of the gameItem//
+        redSquare.y = -25;
+        jumpS.addChild(redSquare);//adds the gameItem as a child of enemy
+        jumpS.x = x;//stores the value passed as the x argument as enemy's x value
+        jumpS.y = y;
+        game.addGameItem(jumpS);// adds the enemy to the game to make it move
+        jumpS.velocityX = -60//speed on the x aixs//
+        jumpS.rotationalVelocity = 0//speed of the enemy rotating
+        
+
+    }
+
+    function eye(x, y){
+
+        var eye = game.createGameItem("eye", 320); //creaate the gameItem and store it 
+        var redSquare = draw.bitmap("img/eye.jpg"); // draws a rectangle and stores it in the game
+        redSquare.x = -25;//stores a value as the x value of the gameItem//
+        redSquare.y = -25;
+        eye.addChild(redSquare);//adds the gameItem as a child of enemy
+        eye.x = x;//stores the value passed as the x argument as enemy's x value
+        eye.y = y;
+        game.addGameItem(eye);// adds the enemy to the game to make it move
+        eye.velocityX = -2//speed on the x aixs//
+        eye.rotationalVelocity = 0//speed of the enemy rotating
+        eye.onPlayerCollision = function () {
+            game.changeIntegrity(-111100)  //takes health away when player hits it
+        };
+        eye.onProjectileCollision = function (){
+            game.increaseScore(100); //increases the score//
+            eye.fadeOut();//flies the enemy 
+        };
+
+    }
+
 
     function saul(x, y){
 
@@ -263,6 +313,8 @@ function createEnemy(x, y){
         bateman.rotationalVelocity = 0//speed of the enemy rotating
         bateman.onPlayerCollision = function () {
             game.increaseScore(-500); //increases the score//
+            bateman.fadeOut();//flies the enemy 
+    
         };
 
         bateman.onProjectileCollision = function (){
@@ -286,10 +338,12 @@ function createEnemy(x, y){
         ghost.rotationalVelocity = 0//speed of the enemy rotating
         ghost.onPlayerCollision = function () {
             game.increaseScore(-500); //increases the score//
+            ghost.fadeOut();//flies the enemy 
+        
         };
     
     ghost.onProjectileCollision = function (){
-        game.changeIntegrity(-1000)
+        game.increaseScore(-200);
         ghost.fadeOut();//flies the enemy 
     };
     }
@@ -381,7 +435,7 @@ function createEnemy(x, y){
         nerd.x = x;
         nerd.y = y;
         game.addGameItem(nerd);
-        nerd.velocityX = -1//speed on the x aixs//
+        nerd.velocityX = -3//speed on the x aixs//
         nerd.rotationalVelocity = 0//speed of the reward rotating
         nerd.onProjectileCollision = function (){
             game.increaseScore(-300); //increases the score//
@@ -415,6 +469,16 @@ function createEnemy(x, y){
             if (gameItem.type === "enemy"){
 
                 createEnemy(gameItem.x, gameItem.y);
+            }
+
+            if (gameItem.type === "eye"){
+
+                eye(gameItem.x, gameItem.y);
+            }
+
+            if (gameItem.type === "jump"){
+
+                jumpS(gameItem.x, gameItem.y);
             }
 
             if (gameItem.type === "reward"){

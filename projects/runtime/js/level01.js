@@ -29,7 +29,7 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 900, "y": groundY -5 },
                 { "type": "sawblade", "x": 950, "y": groundY -5 },             
                 { "type": "troll", "x": 1200, "y": groundY - 50 },
-                { "type": "enemy", "x": 1700, "y": groundY -398 },
+                { "type": "enemy", "x": 1700, "y": groundY -389 },
                 { "type": "sawblade", "x": 1300, "y": groundY -5 },
                 
 
@@ -190,21 +190,7 @@ function createEnemy(x, y){
 
     }
 
-    function jumpS2(x, y){
-
-        var jumpS = game.createGameItem("jump2", 0); //creaate the gameItem and store it 
-        var redSquare = draw.bitmap("img/jump.jpg"); // draws a rectangle and stores it in the game
-        redSquare.x = -25;//stores a value as the x value of the gameItem//
-        redSquare.y = -25;
-        jumpS.addChild(redSquare);//adds the gameItem as a child of enemy
-        jumpS.x = x;//stores the value passed as the x argument as enemy's x value
-        jumpS.y = y;
-        game.addGameItem(jumpS);// adds the enemy to the game to make it move
-        jumpS.velocityX = -60//speed on the x aixs//
-        jumpS.rotationalVelocity = 0//speed of the enemy rotating
-        
-
-    }
+    
 
     function eye(x, y){
 
